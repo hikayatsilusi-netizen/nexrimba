@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NexRimba - Akademi NexRimba Ilmu. Meneroka Ilmu. Membina Masa Depan. Launching 2027">
+    <title>NexRimba - Akademi NexRimba Ilmu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a2332 0%, #16213e 100%);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-section {
+            margin-bottom: 3rem;
+            animation: fadeIn 0.8s ease-out 0.1s both;
+        }
+
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            font-weight: 300;
+            text-transform: uppercase;
+            color: #e8e8e8;
+        }
+
+        .logo-symbol {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .tagline-main {
+            font-size: 1.75rem;
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            color: #b0b8c1;
+            letter-spacing: 0.5px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        .institution-name {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            color: #8b95a5;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            animation: fadeIn 0.8s ease-out 0.3s both;
+        }
+
+        .coming-soon {
+            font-size: 2.2rem;
+            color: #D4AF37;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        .year {
+            font-size: 3rem;
+            font-weight: 200;
+            color: #a8afb8;
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+            animation: fadeIn 0.8s ease-out 0.5s both;
+        }
+
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: #6b7580;
+            animation: fadeIn 0.8s ease-out 0.6s both;
+        }
+
+        .footer-line {
+            margin: 0.3rem 0;
+            letter-spacing: 0.3px;
+        }
+
+        @media (max-width: 640px) {
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            .tagline-main {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+            
+            .coming-soon {
+                font-size: 1.6rem;
+            }
+            
+            .year {
+                font-size: 2.2rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-section">
+            <span class="logo-symbol">⬡</span>
+        </div>
+        
+        <h1 class="logo">NEXRIMBA</h1>
+        
+        <p class="tagline-main">
+            Meneroka Ilmu.<br>
+            Membina Masa Depan.
+        </p>
+        
+        <p class="institution-name">
+            Akademi NexRimba Ilmu
+        </p>
+        
+        <div class="coming-soon">Coming Soon</div>
+        
+        <div class="year">2027</div>
+        
+        <div class="footer">
+            <div class="footer-line">© NexRimba 2026</div>
+            <div class="footer-line">Akademi NexRimba Ilmu</div>
+        </div>
+    </div>
+</body>
+</html>
