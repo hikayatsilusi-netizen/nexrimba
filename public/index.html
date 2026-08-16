@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NexRimba — ekosistem untuk mencipta, belajar dan membaca.">
+  <title>NexRimba — Meneroka Ilmu. Membina Masa Depan.</title>
+  <style>
+    :root{
+      --bg:#f7f8f4;
+      --surface:#ffffff;
+      --ink:#18231d;
+      --muted:#667169;
+      --line:#dfe5df;
+      --green:#1f6b4f;
+      --green-dark:#123f2f;
+      --green-soft:#e6f0ea;
+      --gold:#c79a42;
+      --shadow:0 20px 60px rgba(24,35,29,.09);
+      --radius:24px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+
+    nav{
+      position:sticky;top:0;z-index:20;
+      background:rgba(247,248,244,.88);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(223,229,223,.8);
+    }
+    .nav-inner{
+      height:76px;display:flex;align-items:center;justify-content:space-between;
+    }
+    .brand{
+      display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.08em;
+    }
+    .brand-mark{
+      width:38px;height:38px;border-radius:12px;
+      background:var(--green-dark);color:white;
+      display:grid;place-items:center;font-size:18px;
+    }
+    .nav-links{display:flex;align-items:center;gap:28px;color:var(--muted);font-size:14px;font-weight:700}
+    .nav-links a:hover{color:var(--green)}
+    .nav-cta{
+      padding:10px 16px;border:1px solid var(--green);border-radius:999px;
+      color:var(--green)!important;
+    }
+
+    .hero{padding:96px 0 84px;overflow:hidden}
+    .hero-grid{
+      display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 12px;border-radius:999px;
+      background:var(--green-soft);color:var(--green-dark);
+      font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+    h1{
+      margin:20px 0 18px;
+      font-size:clamp(48px,7vw,82px);
+      line-height:.98;letter-spacing:-.055em;
+    }
+    .hero h1 span{color:var(--green)}
+    .hero-copy{max-width:650px;color:var(--muted);font-size:19px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:48px;padding:0 20px;border-radius:999px;font-weight:800;font-size:14px;
+      border:1px solid transparent;
+    }
+    .btn-primary{background:var(--green-dark);color:#fff}
+    .btn-secondary{background:#fff;border-color:var(--line)}
+    .btn:hover{transform:translateY(-1px)}
+
+    .hero-art{
+      min-height:420px;border-radius:36px;background:var(--green-dark);
+      position:relative;overflow:hidden;box-shadow:var(--shadow);
+      padding:28px;color:#fff;
+    }
+    .hero-art:before,.hero-art:after{
+      content:"";position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.16);
+    }
+    .hero-art:before{width:360px;height:360px;right:-130px;top:-100px}
+    .hero-art:after{width:250px;height:250px;left:-100px;bottom:-100px}
+    .art-label{position:relative;z-index:2;font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.65}
+    .art-title{position:relative;z-index:2;margin-top:80px;font-size:44px;line-height:1.05;font-weight:900;max-width:360px}
+    .art-flow{
+      position:absolute;z-index:2;bottom:28px;left:28px;right:28px;
+      display:grid;grid-template-columns:repeat(5,1fr);gap:8px;
+    }
+    .flow-item{
+      padding:13px 8px;text-align:center;border-radius:14px;
+      background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);
+      font-size:11px;font-weight:800;
+    }
+
+    section{padding:92px 0}
+    .section-head{max-width:700px;margin-bottom:38px}
+    .section-head h2{font-size:clamp(32px,4vw,52px);line-height:1.05;letter-spacing:-.04em;margin:12px 0}
+    .section-head p{color:var(--muted);font-size:17px}
+
+    .ecosystems{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+    }
+    .card{
+      background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+      padding:28px;box-shadow:0 8px 30px rgba(24,35,29,.04);
+    }
+    .card.featured{border-color:#b8d2c3;box-shadow:var(--shadow)}
+    .icon{
+      width:52px;height:52px;border-radius:16px;background:var(--green-soft);
+      display:grid;place-items:center;font-size:24px;margin-bottom:22px;
+    }
+    .card h3{font-size:24px;margin:0 0 8px}
+    .card p{color:var(--muted);margin:0 0 20px}
+    .status{
+      display:inline-flex;padding:6px 10px;border-radius:999px;
+      background:#edf0ed;color:var(--muted);font-size:11px;font-weight:800;text-transform:uppercase;
+    }
+    .status.live{background:var(--green-soft);color:var(--green-dark)}
+    .card-link{display:inline-block;margin-top:18px;color:var(--green);font-weight:800;font-size:14px}
+
+    .flow-section{background:#fff}
+    .production{
+      display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:38px;
+    }
+    .step{
+      position:relative;background:var(--bg);border:1px solid var(--line);
+      border-radius:18px;padding:20px 12px;text-align:center;font-weight:800;font-size:13px;
+    }
+    .step small{display:block;color:var(--muted);font-weight:500;margin-top:4px}
+    .step:not(:last-child):after{
+      content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);
+      color:var(--gold);font-size:18px;font-weight:900;z-index:2;
+    }
+
+    .vision{
+      display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:start;
+    }
+    .vision-box{
+      background:var(--green-dark);color:#fff;border-radius:32px;padding:38px;
+    }
+    .vision-box h2{font-size:42px;line-height:1.05;margin:0 0 16px;letter-spacing:-.04em}
+    .vision-box p{color:rgba(255,255,255,.72)}
+    .principles{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .principle{padding:22px;border:1px solid var(--line);border-radius:18px;background:#fff}
+    .principle strong{display:block;margin-bottom:6px}
+    .principle span{color:var(--muted);font-size:14px}
+
+    footer{padding:42px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+    @media(max-width:900px){
+      .hero-grid,.vision{grid-template-columns:1fr}
+      .ecosystems{grid-template-columns:1fr}
+      .production{grid-template-columns:repeat(3,1fr)}
+      .step:not(:last-child):after{display:none}
+      .nav-links{display:none}
+    }
+    @media(max-width:560px){
+      .container{width:min(var(--max),calc(100% - 28px))}
+      .hero{padding:64px 0}
+      section{padding:68px 0}
+      .hero-art{min-height:360px}
+      .art-flow{grid-template-columns:repeat(2,1fr)}
+      .production{grid-template-columns:1fr 1fr}
+      .principles{grid-template-columns:1fr}
+      h1{font-size:50px}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="brand" href="#top" aria-label="NexRimba">
+      <span class="brand-mark">N</span>
+      <span>NEXRIMBA</span>
+    </a>
+    <div class="nav-links">
+      <a href="#ecosystem">Ekosistem</a>
+      <a href="#nexcomic">NexComic</a>
+      <a href="#visi">Visi</a>
+      <a class="nav-cta" href="#nexcomic">NexComic Engine</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">NexRimba Ecosystem</span>
+        <h1>Meneroka ilmu.<br><span>Membina masa depan.</span></h1>
+        <p class="hero-copy">
+          NexRimba ialah ekosistem digital untuk belajar, mencipta dan membaca —
+          dibina sedikit demi sedikit dengan fokus kepada pengalaman yang bermakna.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#ecosystem">Terokai Ekosistem</a>
+          <a class="btn btn-secondary" href="#nexcomic">Kenali NexComic Engine</a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="NexRimba ecosystem visual">
+        <div class="art-label">Create · Learn · Read</div>
+        <div class="art-title">Satu ekosistem.<br>Pelbagai kemungkinan.</div>
+        <div class="art-flow">
+          <div class="flow-item">CREATE</div>
+          <div class="flow-item">LEARN</div>
+          <div class="flow-item">READ</div>
+          <div class="flow-item">SHARE</div>
+          <div class="flow-item">GROW</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ecosystem">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Ekosistem NexRimba</span>
+        <h2>Tiga arah. Satu ekosistem.</h2>
+        <p>
+          Setiap produk mempunyai peranan tersendiri. Tidak semuanya perlu dibina serentak.
+          NexComic Engine menjadi fokus pembangunan pertama.
+        </p>
+      </div>
+
+      <div class="ecosystems">
+        <article class="card featured" id="nexcomic">
+          <div class="icon">🎨</div>
+          <span class="status live">Fokus Sekarang</span>
+          <h3>NexComic Engine</h3>
+          <p>
+            Comic Production Engine untuk membina komik daripada story,
+            storyboard dan panel sehingga chapter siap dieksport sebagai PDF.
+          </p>
+          <a class="card-link" href="#">Masuk ke NexComic →</a>
+        </article>
+
+        <article class="card">
+          <div class="icon">📚</div>
+          <span class="status">Akan Datang</span>
+          <h3>Akademi NexRimba</h3>
+          <p>
+            Ekosistem pendidikan dan tuisyen untuk pembelajaran,
+            latihan, guru dan pelajar.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="icon">📖</div>
+          <span class="status">Akan Datang</span>
+          <h3>NexStore</h3>
+          <p>
+            Ruang bacaan dan penerbitan untuk buku cerita kanak-kanak,
+            scroll story, komik dan karya creator NexRimba.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="flow-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">NexComic Engine</span>
+        <h2>Dari cerita hingga chapter.</h2>
+        <p>
+          Production workflow dibina supaya creator boleh bekerja secara berperingkat
+          dan mengubah panel tertentu tanpa merosakkan keseluruhan halaman.
+        </p>
+      </div>
+
+      <div class="production">
+        <div class="step">Story<small>Idea & narrative</small></div>
+        <div class="step">Storyboard<small>Plan scene</small></div>
+        <div class="step">Panel<small>Create & edit</small></div>
+        <div class="step">Page<small>Compose</small></div>
+        <div class="step">QA<small>Review & lock</small></div>
+        <div class="step">PDF<small>Export chapter</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visi">
+    <div class="container vision">
+      <div class="vision-box">
+        <span class="eyebrow" style="background:rgba(255,255,255,.1);color:#fff">Visi NexRimba</span>
+        <h2>Belajar.<br>Cipta.<br>Baca.</h2>
+        <p>
+          NexRimba dibina sebagai ekosistem yang boleh berkembang.
+          Produk boleh mempunyai fungsi yang berbeza, tetapi semuanya berkongsi
+          satu visi: membantu manusia belajar, mencipta dan menikmati karya.
+        </p>
+      </div>
+
+      <div class="principles">
+        <div class="principle">
+          <strong>🌱 Dibina berperingkat</strong>
+          <span>Fokus kepada produk yang benar-benar boleh digunakan sebelum berkembang lebih jauh.</span>
+        </div>
+        <div class="principle">
+          <strong>🎨 Creator-first</strong>
+          <span>NexComic memberi ruang untuk membina karya secara terkawal dan boleh diedit.</span>
+        </div>
+        <div class="principle">
+          <strong>📚 Education-ready</strong>
+          <span>Akademi NexRimba akan menjadi cabang pembelajaran pada masa akan datang.</span>
+        </div>
+        <div class="principle">
+          <strong>📖 Open ecosystem</strong>
+          <span>NexStore kelak menjadi tempat karya dan bahan bacaan diterokai oleh pembaca.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 NexRimba. All rights reserved.</span>
+    <span>Meneroka Ilmu. Membina Masa Depan.</span>
+  </div>
+</footer>
+
+</body>
+</html>
